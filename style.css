@@ -200,3 +200,16 @@ button:hover {
 .company-card {
   width: 100%;
 }
+
+#roadmap {
+  margin-top: 15px;
+}
+
+.roadmap-step {
+  background: #f8fafc;
+  padding: 10px;
+  margin-top: 8px;
+  border-left: 4px solid #2563eb;
+  border-radius: 6px;
+  font-size: 14px;
+}

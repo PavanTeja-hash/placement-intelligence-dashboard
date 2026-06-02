@@ -208,3 +208,93 @@ function analyzeResume() {
   document.getElementById("resumeResult").innerText =
     "Resume Score: " + score.toFixed(0) + "/100 | Status: " + status;
 }
+
+function generateRoadmap() {
+  const role = document.getElementById("role").value;
+
+  let roadmap = [];
+
+  switch (role) {
+    case "Software Engineer":
+      roadmap = [
+        "Master Java and OOP",
+        "Solve 200+ DSA Problems",
+        "Learn SQL and DBMS",
+        "Build 2 Major Projects",
+        "Practice Mock Interviews",
+      ];
+      break;
+
+    case "Java Backend Developer":
+      roadmap = [
+        "Strengthen Core Java",
+        "Learn Advanced SQL",
+        "Learn Spring Boot",
+        "Build REST APIs",
+        "Deploy a Backend Project",
+      ];
+      break;
+
+    case "Frontend Developer":
+      roadmap = [
+        "Master HTML, CSS, JavaScript",
+        "Learn React",
+        "Build Responsive Websites",
+        "Create Portfolio Projects",
+        "Deploy Projects Online",
+      ];
+      break;
+
+    case "Data Analyst":
+      roadmap = [
+        "Learn Excel",
+        "Master SQL",
+        "Learn Power BI",
+        "Practice Data Cleaning",
+        "Build Analytics Dashboards",
+      ];
+      break;
+
+    case "Data Scientist":
+      roadmap = [
+        "Learn Python",
+        "Master Pandas and NumPy",
+        "Study Machine Learning",
+        "Work on Datasets",
+        "Build ML Projects",
+      ];
+      break;
+
+    case "Cloud Engineer":
+      roadmap = [
+        "Learn Linux",
+        "Master Networking Basics",
+        "Learn AWS",
+        "Study Docker",
+        "Learn Terraform",
+      ];
+      break;
+
+    case "DevOps Engineer":
+      roadmap = [
+        "Learn Linux",
+        "Master Git",
+        "Learn Docker",
+        "Study Kubernetes",
+        "Build CI/CD Pipelines",
+      ];
+      break;
+  }
+
+  let output = "";
+
+  roadmap.forEach((step, index) => {
+    output += `
+      <div class="roadmap-step">
+        Step ${index + 1}: ${step}
+      </div>
+    `;
+  });
+
+  document.getElementById("roadmap").innerHTML = output;
+}
