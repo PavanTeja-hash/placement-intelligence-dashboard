@@ -1,0 +1,22 @@
+[
+  {
+    "name": "TCS",
+    "cgpa": 6.0,
+    "backlogsAllowed": false
+  },
+  {
+    "name": "Infosys",
+    "cgpa": 6.5,
+    "backlogsAllowed": false
+  },
+  {
+    "name": "Accenture",
+    "cgpa": 7.0,
+    "backlogsAllowed": false
+  },
+  {
+    "name": "AutoRABIT",
+    "cgpa": 8.0,
+    "backlogsAllowed": false
+  }
+]

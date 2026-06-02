@@ -1,0 +1,11 @@
+{
+  "Software Engineer": ["Java", "DSA", "SQL", "Git", "OOP"],
+
+  "Java Backend Developer": ["Java", "SQL", "Spring Boot", "Git", "REST APIs"],
+
+  "Data Analyst": ["Python", "SQL", "Excel", "Power BI", "Statistics"],
+
+  "Data Scientist": ["Python", "SQL", "Pandas", "NumPy", "Machine Learning"],
+
+  "Frontend Developer": ["HTML", "CSS", "JavaScript", "Git"]
+}
