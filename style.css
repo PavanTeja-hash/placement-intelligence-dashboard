@@ -213,3 +213,12 @@ button:hover {
   border-radius: 6px;
   font-size: 14px;
 }
+
+.plan-step {
+  background: #f8fafc;
+  padding: 10px;
+  margin-top: 8px;
+  border-left: 4px solid #10b981;
+  border-radius: 6px;
+  font-size: 14px;
+}

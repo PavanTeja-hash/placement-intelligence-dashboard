@@ -336,3 +336,53 @@ function analyzePlacementTracker() {
   document.getElementById("placementResult").innerText =
     "Placement Progress: " + score.toFixed(0) + "% | Status: " + status;
 }
+
+function generateDailyPlan() {
+  const hours = Number(document.getElementById("studyHours").value);
+
+  let plan = [];
+
+  if (hours <= 2) {
+    plan = [
+      "Solve 2 DSA Problems",
+      "Revise Java Concepts",
+      "Practice 10 Aptitude Questions",
+    ];
+  } else if (hours <= 4) {
+    plan = [
+      "Solve 4 DSA Problems",
+      "Revise Java + OOP",
+      "Practice 20 Aptitude Questions",
+      "Work on PlacementIQ Project",
+    ];
+  } else if (hours <= 6) {
+    plan = [
+      "Solve 5 DSA Problems",
+      "Revise Java + SQL",
+      "Practice 25 Aptitude Questions",
+      "Work on PlacementIQ Project",
+      "Apply to Companies",
+    ];
+  } else {
+    plan = [
+      "Solve 6 DSA Problems",
+      "Revise Java + SQL + DBMS",
+      "Practice 30 Aptitude Questions",
+      "Work on PlacementIQ Project",
+      "Apply to Companies",
+      "Practice Interview Questions",
+    ];
+  }
+
+  let output = "";
+
+  plan.forEach((step, index) => {
+    output += `
+      <div class="plan-step">
+        Task ${index + 1}: ${step}
+      </div>
+    `;
+  });
+
+  document.getElementById("dailyPlan").innerHTML = output;
+}
