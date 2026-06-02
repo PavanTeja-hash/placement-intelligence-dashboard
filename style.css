@@ -127,10 +127,13 @@ button:hover {
 #companies,
 #missingSkills,
 #dsaResult,
-#resumeResult {
+#resumeResult,
+#placementResult {
   margin-top: 15px;
   font-weight: bold;
 }
+
+/* PROGRESS BARS */
 
 .progress-container {
   width: 100%;
@@ -147,6 +150,8 @@ button:hover {
   transition: width 0.5s;
 }
 
+/* FOOTER */
+
 .footer {
   text-align: center;
   padding: 20px;
@@ -155,12 +160,17 @@ button:hover {
   color: white;
 }
 
+/* RESULTS */
+
 .result-text {
   margin-top: 10px;
   font-weight: bold;
 }
 
+/* COMPANY CARDS */
+
 .company-card {
+  width: 100%;
   margin-top: 10px;
   padding: 10px;
   border-radius: 8px;
@@ -185,21 +195,13 @@ button:hover {
 }
 
 #companies {
-  margin-top: 12px;
-  max-height: 250px;
-  overflow-y: auto;
-}
-
-#companies {
   margin-top: 15px;
   max-height: 250px;
   overflow-y: auto;
   width: 100%;
 }
 
-.company-card {
-  width: 100%;
-}
+/* ROADMAP */
 
 #roadmap {
   margin-top: 15px;
@@ -214,6 +216,8 @@ button:hover {
   font-size: 14px;
 }
 
+/* DAILY PLANNER */
+
 .plan-step {
   background: #f8fafc;
   padding: 10px;
@@ -221,4 +225,14 @@ button:hover {
   border-left: 4px solid #10b981;
   border-radius: 6px;
   font-size: 14px;
+}
+
+/* VALIDATION ERRORS */
+
+.error-message {
+  color: #dc2626;
+  font-size: 12px;
+  font-weight: 600;
+  margin-top: 5px;
+  min-height: 16px;
 }

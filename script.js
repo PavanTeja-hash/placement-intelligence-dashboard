@@ -1,6 +1,14 @@
 let companiesData = [];
 let rolesData = {};
 
+function clearErrors() {
+  const errors = document.querySelectorAll(".error-message");
+
+  errors.forEach((error) => {
+    error.innerText = "";
+  });
+}
+
 loadData();
 
 async function loadData() {
@@ -53,10 +61,22 @@ function updateSkills() {
 
 function calculateScore() {
   let cgpa = Number(document.getElementById("cgpa").value);
-
   let dsa = Number(document.getElementById("dsa").value);
-
   let projects = Number(document.getElementById("projects").value);
+
+  clearErrors();
+
+  if (cgpa < 0 || cgpa > 10) {
+    document.getElementById("cgpaError").innerText =
+      "CGPA must be between 0 and 10";
+    return;
+  }
+
+  if (dsa < 0 || projects < 0) {
+    document.getElementById("cgpaError").innerText =
+      "Values cannot be negative";
+    return;
+  }
 
   let score = 0;
 
@@ -76,6 +96,14 @@ function checkEligibility() {
 
   let backlogs = document.getElementById("backlogs").value;
 
+  clearErrors();
+
+  if (cgpa < 0 || cgpa > 10) {
+    document.getElementById("eligibilityError").innerText =
+      "CGPA must be between 0 and 10";
+    return;
+  }
+
   if (backlogs === "Yes") {
     document.getElementById("companies").innerHTML =
       "<p>Not Eligible Due To Active Backlogs</p>";
@@ -88,13 +116,13 @@ function checkEligibility() {
   companiesData.forEach((company) => {
     if (cgpa >= company.cgpa) {
       output += `
-            <div class="company-card">
-                <h5>${company.name}</h5>
-                <p><strong>Package:</strong> ${company.package}</p>
-                <p><strong>Branches:</strong> ${company.branches.join(", ")}</p>
-                <p><strong>Minimum CGPA:</strong> ${company.cgpa}</p>
-            </div>
-            `;
+      <div class="company-card">
+        <h5>${company.name}</h5>
+        <p><strong>Package:</strong> ${company.package}</p>
+        <p><strong>Branches:</strong> ${company.branches.join(", ")}</p>
+        <p><strong>Minimum CGPA:</strong> ${company.cgpa}</p>
+      </div>
+      `;
     }
   });
 
@@ -145,6 +173,14 @@ function analyzeDSA() {
 
   let hard = Number(document.getElementById("hard").value);
 
+  clearErrors();
+
+  if (easy < 0 || medium < 0 || hard < 0) {
+    document.getElementById("dsaError").innerText =
+      "Problem counts cannot be negative";
+    return;
+  }
+
   let score = easy + medium * 2 + hard * 3;
 
   let readiness = (score / 500) * 100;
@@ -177,6 +213,14 @@ function analyzeResume() {
   let certifications = Number(
     document.getElementById("resumeCertifications").value,
   );
+
+  clearErrors();
+
+  if (projects < 0 || internships < 0 || certifications < 0) {
+    document.getElementById("resumeError").innerText =
+      "Values cannot be negative";
+    return;
+  }
 
   let easy = Number(document.getElementById("easy").value);
 
@@ -308,6 +352,32 @@ function analyzePlacementTracker() {
 
   let offers = Number(document.getElementById("offersReceived").value);
 
+  clearErrors();
+
+  if (applied < 0 || oa < 0 || interviews < 0 || offers < 0) {
+    document.getElementById("placementError").innerText =
+      "Values cannot be negative";
+    return;
+  }
+
+  if (oa > applied) {
+    document.getElementById("placementError").innerText =
+      "OA Cleared cannot exceed Applied Companies";
+    return;
+  }
+
+  if (interviews > oa) {
+    document.getElementById("placementError").innerText =
+      "Interviews Cleared cannot exceed OA Cleared";
+    return;
+  }
+
+  if (offers > interviews) {
+    document.getElementById("placementError").innerText =
+      "Offers Received cannot exceed Interviews Cleared";
+    return;
+  }
+
   let score = 0;
 
   score += Math.min(applied * 2, 20);
@@ -341,6 +411,14 @@ function generateDailyPlan() {
   const hours = Number(document.getElementById("studyHours").value);
 
   let plan = [];
+
+  clearErrors();
+
+  if (hours <= 0) {
+    document.getElementById("plannerError").innerText =
+      "Study hours must be greater than 0";
+    return;
+  }
 
   if (hours <= 2) {
     plan = [
