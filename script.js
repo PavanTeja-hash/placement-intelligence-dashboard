@@ -298,3 +298,41 @@ function generateRoadmap() {
 
   document.getElementById("roadmap").innerHTML = output;
 }
+
+function analyzePlacementTracker() {
+  let applied = Number(document.getElementById("appliedCompanies").value);
+
+  let oa = Number(document.getElementById("oaCleared").value);
+
+  let interviews = Number(document.getElementById("interviewsCleared").value);
+
+  let offers = Number(document.getElementById("offersReceived").value);
+
+  let score = 0;
+
+  score += Math.min(applied * 2, 20);
+  score += Math.min(oa * 5, 30);
+  score += Math.min(interviews * 10, 30);
+  score += Math.min(offers * 20, 20);
+
+  if (score > 100) {
+    score = 100;
+  }
+
+  let status = "";
+
+  if (score < 30) {
+    status = "Getting Started";
+  } else if (score < 60) {
+    status = "Actively Preparing";
+  } else if (score < 90) {
+    status = "Interview Ready";
+  } else {
+    status = "Placement Achieved";
+  }
+
+  document.getElementById("placementProgress").style.width = score + "%";
+
+  document.getElementById("placementResult").innerText =
+    "Placement Progress: " + score.toFixed(0) + "% | Status: " + status;
+}

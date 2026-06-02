@@ -138,6 +138,32 @@
 
         <p id="resumeResult" class="result-text"></p>
       </div>
+
+      <div class="card">
+        <h2>Placement Tracker</h2>
+
+        <label>Companies Applied</label>
+        <input type="number" id="appliedCompanies" />
+
+        <label>Online Assessments Cleared</label>
+        <input type="number" id="oaCleared" />
+
+        <label>Interviews Cleared</label>
+        <input type="number" id="interviewsCleared" />
+
+        <label>Offers Received</label>
+        <input type="number" id="offersReceived" />
+
+        <button onclick="analyzePlacementTracker()">
+          Analyze Placement Progress
+        </button>
+
+        <div class="progress-container">
+          <div id="placementProgress" class="progress-bar"></div>
+        </div>
+
+        <p id="placementResult" class="result-text"></p>
+      </div>
     </div>
 
     <script src="script.js"></script>
