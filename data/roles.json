@@ -3,9 +3,13 @@
 
   "Java Backend Developer": ["Java", "SQL", "Spring Boot", "Git", "REST APIs"],
 
+  "Frontend Developer": ["HTML", "CSS", "JavaScript", "Git", "React"],
+
   "Data Analyst": ["Python", "SQL", "Excel", "Power BI", "Statistics"],
 
   "Data Scientist": ["Python", "SQL", "Pandas", "NumPy", "Machine Learning"],
 
-  "Frontend Developer": ["HTML", "CSS", "JavaScript", "Git"]
+  "Cloud Engineer": ["Linux", "AWS", "Networking", "Docker", "Terraform"],
+
+  "DevOps Engineer": ["Linux", "Git", "Docker", "Kubernetes", "CI/CD"]
 }

@@ -2,21 +2,106 @@
   {
     "name": "TCS",
     "cgpa": 6.0,
-    "backlogsAllowed": false
+    "backlogsAllowed": false,
+    "package": "3.5 LPA",
+    "branches": ["CSE", "ISE", "ECE"]
   },
   {
     "name": "Infosys",
     "cgpa": 6.5,
-    "backlogsAllowed": false
+    "backlogsAllowed": false,
+    "package": "4.0 LPA",
+    "branches": ["CSE", "ISE", "ECE"]
+  },
+  {
+    "name": "Wipro",
+    "cgpa": 6.0,
+    "backlogsAllowed": false,
+    "package": "3.5 LPA",
+    "branches": ["CSE", "ISE", "ECE"]
+  },
+  {
+    "name": "Cognizant",
+    "cgpa": 6.0,
+    "backlogsAllowed": false,
+    "package": "4.0 LPA",
+    "branches": ["CSE", "ISE", "ECE"]
+  },
+  {
+    "name": "Capgemini",
+    "cgpa": 6.0,
+    "backlogsAllowed": false,
+    "package": "4.25 LPA",
+    "branches": ["CSE", "ISE", "ECE"]
   },
   {
     "name": "Accenture",
     "cgpa": 7.0,
-    "backlogsAllowed": false
+    "backlogsAllowed": false,
+    "package": "4.5 LPA",
+    "branches": ["CSE", "ISE"]
+  },
+  {
+    "name": "IBM",
+    "cgpa": 7.0,
+    "backlogsAllowed": false,
+    "package": "5.0 LPA",
+    "branches": ["CSE", "ISE"]
+  },
+  {
+    "name": "Oracle",
+    "cgpa": 7.5,
+    "backlogsAllowed": false,
+    "package": "8.0 LPA",
+    "branches": ["CSE", "ISE"]
+  },
+  {
+    "name": "SAP",
+    "cgpa": 7.5,
+    "backlogsAllowed": false,
+    "package": "8.5 LPA",
+    "branches": ["CSE", "ISE"]
+  },
+  {
+    "name": "Dell",
+    "cgpa": 7.0,
+    "backlogsAllowed": false,
+    "package": "6.0 LPA",
+    "branches": ["CSE", "ISE"]
   },
   {
     "name": "AutoRABIT",
     "cgpa": 8.0,
-    "backlogsAllowed": false
+    "backlogsAllowed": false,
+    "package": "10.0 LPA",
+    "branches": ["CSE", "ISE"]
+  },
+  {
+    "name": "Epicor",
+    "cgpa": 7.0,
+    "backlogsAllowed": false,
+    "package": "6.5 LPA",
+    "branches": ["CSE", "ISE"]
+  },
+  {
+    "name": "Evertz",
+    "cgpa": 7.0,
+    "backlogsAllowed": false,
+    "package": "8.0 LPA",
+    "branches": ["CSE", "ISE"]
+  },
+  {
+    "name": "Zoho",
+    "cgpa": 7.0,
+    "backlogsAllowed": false,
+    "package": "7.0 LPA",
+    "branches": ["CSE", "ISE"]
+  },
+  {
+    "name": "ThoughtWorks",
+    "cgpa": 7.5,
+    "backlogsAllowed": false,
+    "package": "9.0 LPA",
+    "branches": ["CSE", "ISE"]
   }
 ]
