@@ -1,3 +1,54 @@
+let companiesData = [];
+let rolesData = {};
+
+loadData();
+
+async function loadData() {
+  const companiesResponse = await fetch("data/companies.json");
+
+  companiesData = await companiesResponse.json();
+
+  const rolesResponse = await fetch("data/roles.json");
+
+  rolesData = await rolesResponse.json();
+
+  populateRoles();
+}
+
+function populateRoles() {
+  const roleDropdown = document.getElementById("role");
+
+  roleDropdown.innerHTML = "";
+
+  Object.keys(rolesData).forEach((role) => {
+    const option = document.createElement("option");
+
+    option.value = role;
+    option.textContent = role;
+
+    roleDropdown.appendChild(option);
+  });
+
+  updateSkills();
+
+  roleDropdown.addEventListener("change", updateSkills);
+}
+
+function updateSkills() {
+  const role = document.getElementById("role").value;
+
+  const skillsContainer = document.getElementById("skillsContainer");
+
+  skillsContainer.innerHTML = "";
+
+  rolesData[role].forEach((skill) => {
+    skillsContainer.innerHTML += `<input type="checkbox" value="${skill}">
+            ${skill}<br>`;
+  });
+
+  document.getElementById("missingSkills").innerText = "";
+}
+
 function calculateScore() {
   let cgpa = Number(document.getElementById("cgpa").value);
 
@@ -30,75 +81,55 @@ function checkEligibility() {
     return;
   }
 
-  let companies = [];
+  let eligibleCompanies = [];
 
-  if (cgpa >= 6.0) companies.push("TCS");
-  if (cgpa >= 6.5) companies.push("Infosys");
-  if (cgpa >= 7.0) companies.push("Accenture");
-  if (cgpa >= 8.0) companies.push("AutoRABIT");
+  companiesData.forEach((company) => {
+    if (cgpa >= company.cgpa) {
+      eligibleCompanies.push(`${company.name} (${company.package})`);
+    }
+  });
 
-  if (companies.length === 0) {
+  if (eligibleCompanies.length === 0) {
     document.getElementById("companies").innerText =
       "No Eligible Companies Found";
   } else {
     document.getElementById("companies").innerText =
-      "Eligible Companies: " + companies.join(", ");
+      eligibleCompanies.join(", ");
   }
 }
 
 function analyzeSkills() {
   const role = document.getElementById("role").value;
 
-  const roleSkills = {
-    "Software Engineer": ["Java", "DSA", "SQL", "Git", "OOP"],
-
-    "Java Backend Developer": [
-      "Java",
-      "SQL",
-      "Spring Boot",
-      "Git",
-      "REST APIs",
-    ],
-
-    "Data Analyst": ["Python", "SQL", "Excel", "Power BI", "Statistics"],
-
-    "Data Scientist": ["Python", "SQL", "Pandas", "NumPy", "Machine Learning"],
-
-    "Frontend Developer": ["HTML", "CSS", "JavaScript", "Git"],
-  };
-
   const selectedSkills = [];
 
   document
-    .querySelectorAll('.skills input[type="checkbox"]:checked')
+    .querySelectorAll('#skillsContainer input[type="checkbox"]:checked')
     .forEach((skill) => {
       selectedSkills.push(skill.value);
     });
 
-  const requiredSkills = roleSkills[role];
+  const requiredSkills = rolesData[role];
 
-  const missingSkills = requiredSkills.filter(
-    (skill) => !selectedSkills.includes(skill),
-  );
+  const readiness = (selectedSkills.length / requiredSkills.length) * 100;
 
-  if (missingSkills.length === 0) {
-    document.getElementById("missingSkills").innerText =
-      "You Are Ready For This Career Path";
+  let status = "";
+
+  if (readiness < 40) {
+    status = "Beginner";
+  } else if (readiness < 70) {
+    status = "Intermediate";
+  } else if (readiness < 100) {
+    status = "Almost Ready";
   } else {
-    document.getElementById("missingSkills").innerText =
-      "Missing Skills: " + missingSkills.join(", ");
+    status = "Ready";
   }
+
+  document.getElementById("careerProgress").style.width = readiness + "%";
+
+  document.getElementById("missingSkills").innerText =
+    "Career Readiness: " + readiness.toFixed(0) + "% | Status: " + status;
 }
-
-document.getElementById("role").addEventListener("change", function () {
-  document
-    .querySelectorAll('.skills input[type="checkbox"]')
-    .forEach((skill) => {
-      skill.checked = false;
-    });
-
-  document.getElementById("missingSkills").innerText = "";
-});
 
 function analyzeDSA() {
   let easy = Number(document.getElementById("easy").value);
@@ -107,20 +138,28 @@ function analyzeDSA() {
 
   let hard = Number(document.getElementById("hard").value);
 
-  let total = easy + medium + hard;
+  let score = easy + medium * 2 + hard * 3;
+
+  let readiness = (score / 500) * 100;
+
+  if (readiness > 100) {
+    readiness = 100;
+  }
 
   let level = "";
 
-  if (total < 50) {
+  if (readiness < 40) {
     level = "Beginner";
-  } else if (total < 150) {
+  } else if (readiness < 70) {
     level = "Intermediate";
   } else {
     level = "Advanced";
   }
 
+  document.getElementById("dsaProgress").style.width = readiness + "%";
+
   document.getElementById("dsaResult").innerText =
-    "Total Solved: " + total + " | Level: " + level;
+    "DSA Score: " + score + "/500 | Level: " + level;
 }
 
 function analyzeResume() {
@@ -138,14 +177,14 @@ function analyzeResume() {
 
   let hard = Number(document.getElementById("hard").value);
 
-  let dsa = easy + medium + hard;
+  let dsaScore = easy + medium * 2 + hard * 3;
 
   let score = 0;
 
   score += Math.min(projects * 10, 30);
   score += Math.min(internships * 25, 25);
   score += Math.min(certifications * 5, 15);
-  score += Math.min(dsa / 5, 30);
+  score += Math.min((dsaScore / 500) * 30, 30);
 
   let status = "";
 
@@ -156,6 +195,8 @@ function analyzeResume() {
   } else {
     status = "Highly Competitive";
   }
+
+  document.getElementById("resumeProgress").style.width = score + "%";
 
   document.getElementById("resumeResult").innerText =
     "Resume Score: " + score.toFixed(0) + "/100 | Status: " + status;

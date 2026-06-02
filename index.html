@@ -6,7 +6,6 @@
     <title>PlacementIQ</title>
     <link rel="stylesheet" href="style.css" />
   </head>
-
   <body>
     <nav class="navbar">
       <h2>PlacementIQ</h2>
@@ -28,19 +27,17 @@
       </div>
 
       <div class="stat-card">
-        <h3>5</h3>
+        <h3>7</h3>
         <p>Career Paths</p>
       </div>
 
       <div class="stat-card">
-        <h3>100%</h3>
-        <p>Student Focused</p>
+        <h3>15+</h3>
+        <p>Companies</p>
       </div>
     </section>
 
     <div class="dashboard">
-      <!-- Placement Readiness Calculator -->
-
       <div class="card">
         <h2>Placement Readiness Calculator</h2>
 
@@ -57,8 +54,6 @@
 
         <h3 id="score">0%</h3>
       </div>
-
-      <!-- Company Eligibility Checker -->
 
       <div class="card">
         <h2>Company Eligibility Checker</h2>
@@ -78,50 +73,25 @@
         <p id="companies"></p>
       </div>
 
-      <!-- Career Path Analyzer -->
-
       <div class="card">
         <h2>Career Path Analyzer</h2>
 
         <label>Select Career Path</label>
 
-        <select id="role">
-          <option>Software Engineer</option>
-          <option>Java Backend Developer</option>
-          <option>Data Analyst</option>
-          <option>Data Scientist</option>
-          <option>Frontend Developer</option>
-        </select>
+        <select id="role"></select>
 
         <h3>Select Skills</h3>
 
-        <div class="skills">
-          <input type="checkbox" value="Java" /> Java <br />
-          <input type="checkbox" value="SQL" /> SQL <br />
-          <input type="checkbox" value="DSA" /> DSA <br />
-          <input type="checkbox" value="Git" /> Git <br />
-          <input type="checkbox" value="OOP" /> OOP <br />
-          <input type="checkbox" value="Spring Boot" /> Spring Boot <br />
-          <input type="checkbox" value="REST APIs" /> REST APIs <br />
-          <input type="checkbox" value="Python" /> Python <br />
-          <input type="checkbox" value="Excel" /> Excel <br />
-          <input type="checkbox" value="Power BI" /> Power BI <br />
-          <input type="checkbox" value="Statistics" /> Statistics <br />
-          <input type="checkbox" value="Pandas" /> Pandas <br />
-          <input type="checkbox" value="NumPy" /> NumPy <br />
-          <input type="checkbox" value="Machine Learning" /> Machine Learning
-          <br />
-          <input type="checkbox" value="HTML" /> HTML <br />
-          <input type="checkbox" value="CSS" /> CSS <br />
-          <input type="checkbox" value="JavaScript" /> JavaScript <br />
-        </div>
+        <div id="skillsContainer" class="skills"></div>
 
         <button onclick="analyzeSkills()">Analyze Skills</button>
 
-        <p id="missingSkills"></p>
-      </div>
+        <div class="progress-container">
+          <div id="careerProgress" class="progress-bar"></div>
+        </div>
 
-      <!-- DSA Tracker -->
+        <p id="missingSkills" class="result-text"></p>
+      </div>
 
       <div class="card">
         <h2>DSA Progress Tracker</h2>
@@ -137,10 +107,12 @@
 
         <button onclick="analyzeDSA()">Analyze DSA</button>
 
-        <p id="dsaResult"></p>
-      </div>
+        <div class="progress-container">
+          <div id="dsaProgress" class="progress-bar"></div>
+        </div>
 
-      <!-- Resume Analyzer -->
+        <p id="dsaResult" class="result-text"></p>
+      </div>
 
       <div class="card">
         <h2>Resume Strength Analyzer</h2>
@@ -156,10 +128,19 @@
 
         <button onclick="analyzeResume()">Analyze Resume</button>
 
-        <p id="resumeResult"></p>
+        <div class="progress-container">
+          <div id="resumeProgress" class="progress-bar"></div>
+        </div>
+
+        <p id="resumeResult" class="result-text"></p>
       </div>
     </div>
 
     <script src="script.js"></script>
+
+    <footer class="footer">
+      <p>© 2026 PlacementIQ</p>
+      <p>Built for placement preparation and career readiness.</p>
+    </footer>
   </body>
 </html>
