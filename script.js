@@ -386,3 +386,27 @@ function generateDailyPlan() {
 
   document.getElementById("dailyPlan").innerHTML = output;
 }
+
+const allInputs = document.querySelectorAll("input, select");
+
+allInputs.forEach((input) => {
+  const savedValue = localStorage.getItem(input.id);
+
+  if (savedValue !== null) {
+    input.value = savedValue;
+  }
+
+  input.addEventListener("input", () => {
+    localStorage.setItem(input.id, input.value);
+  });
+
+  input.addEventListener("change", () => {
+    localStorage.setItem(input.id, input.value);
+  });
+});
+
+function clearSavedData() {
+  localStorage.clear();
+
+  location.reload();
+}
