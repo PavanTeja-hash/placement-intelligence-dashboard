@@ -13,6 +13,8 @@ async function loadData() {
   rolesData = await rolesResponse.json();
 
   populateRoles();
+
+  document.getElementById("companyCount").innerText = companiesData.length;
 }
 
 function populateRoles() {
@@ -75,27 +77,32 @@ function checkEligibility() {
   let backlogs = document.getElementById("backlogs").value;
 
   if (backlogs === "Yes") {
-    document.getElementById("companies").innerText =
-      "Not Eligible Due To Active Backlogs";
+    document.getElementById("companies").innerHTML =
+      "<p>Not Eligible Due To Active Backlogs</p>";
 
     return;
   }
 
-  let eligibleCompanies = [];
+  let output = "";
 
   companiesData.forEach((company) => {
     if (cgpa >= company.cgpa) {
-      eligibleCompanies.push(`${company.name} (${company.package})`);
+      output += `
+            <div class="company-card">
+                <h5>${company.name}</h5>
+                <p><strong>Package:</strong> ${company.package}</p>
+                <p><strong>Branches:</strong> ${company.branches.join(", ")}</p>
+                <p><strong>Minimum CGPA:</strong> ${company.cgpa}</p>
+            </div>
+            `;
     }
   });
 
-  if (eligibleCompanies.length === 0) {
-    document.getElementById("companies").innerText =
-      "No Eligible Companies Found";
-  } else {
-    document.getElementById("companies").innerText =
-      eligibleCompanies.join(", ");
+  if (output === "") {
+    output = "<p>No Eligible Companies Found</p>";
   }
+
+  document.getElementById("companies").innerHTML = output;
 }
 
 function analyzeSkills() {

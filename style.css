@@ -159,3 +159,44 @@ button:hover {
   margin-top: 10px;
   font-weight: bold;
 }
+
+.company-card {
+  margin-top: 10px;
+  padding: 10px;
+  border-radius: 8px;
+  background-color: #f8fafc;
+  border-left: 4px solid #2563eb;
+}
+
+.company-card h4 {
+  font-size: 16px;
+  margin: 0 0 6px 0;
+}
+
+.company-card h5 {
+  font-size: 15px;
+  margin: 0 0 6px 0;
+}
+
+.company-card p {
+  font-size: 13px;
+  color: #555;
+  margin: 3px 0;
+}
+
+#companies {
+  margin-top: 12px;
+  max-height: 250px;
+  overflow-y: auto;
+}
+
+#companies {
+  margin-top: 15px;
+  max-height: 250px;
+  overflow-y: auto;
+  width: 100%;
+}
+
+.company-card {
+  width: 100%;
+}
