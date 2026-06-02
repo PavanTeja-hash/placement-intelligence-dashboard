@@ -1,0 +1,140 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Placement Intelligence Dashboard</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+
+  <body>
+    <div class="header">
+      <h1>Placement Intelligence Dashboard</h1>
+      <p>Track Placement Readiness, Skills, DSA Progress & Resume Strength</p>
+    </div>
+
+    <div class="dashboard">
+      <!-- Placement Readiness Calculator -->
+
+      <div class="card">
+        <h2>Placement Readiness Calculator</h2>
+
+        <label>CGPA</label>
+        <input type="number" id="cgpa" />
+
+        <label>DSA Solved</label>
+        <input type="number" id="dsa" />
+
+        <label>Projects</label>
+        <input type="number" id="projects" />
+
+        <button onclick="calculateScore()">Calculate Score</button>
+
+        <h3 id="score">0%</h3>
+      </div>
+
+      <!-- Company Eligibility Checker -->
+
+      <div class="card">
+        <h2>Company Eligibility Checker</h2>
+
+        <label>CGPA</label>
+        <input type="number" id="eligibilityCgpa" />
+
+        <label>Active Backlogs</label>
+
+        <select id="backlogs">
+          <option value="No">No</option>
+          <option value="Yes">Yes</option>
+        </select>
+
+        <button onclick="checkEligibility()">Check Eligibility</button>
+
+        <p id="companies"></p>
+      </div>
+
+      <!-- Career Path Analyzer -->
+
+      <div class="card">
+        <h2>Career Path Analyzer</h2>
+
+        <label>Select Career Path</label>
+
+        <select id="role">
+          <option>Software Engineer</option>
+          <option>Java Backend Developer</option>
+          <option>Data Analyst</option>
+          <option>Data Scientist</option>
+          <option>Frontend Developer</option>
+        </select>
+
+        <h3>Select Skills</h3>
+
+        <div class="skills">
+          <input type="checkbox" value="Java" /> Java <br />
+          <input type="checkbox" value="SQL" /> SQL <br />
+          <input type="checkbox" value="DSA" /> DSA <br />
+          <input type="checkbox" value="Git" /> Git <br />
+          <input type="checkbox" value="OOP" /> OOP <br />
+          <input type="checkbox" value="Spring Boot" /> Spring Boot <br />
+          <input type="checkbox" value="REST APIs" /> REST APIs <br />
+          <input type="checkbox" value="Python" /> Python <br />
+          <input type="checkbox" value="Excel" /> Excel <br />
+          <input type="checkbox" value="Power BI" /> Power BI <br />
+          <input type="checkbox" value="Statistics" /> Statistics <br />
+          <input type="checkbox" value="Pandas" /> Pandas <br />
+          <input type="checkbox" value="NumPy" /> NumPy <br />
+          <input type="checkbox" value="Machine Learning" /> Machine Learning
+          <br />
+          <input type="checkbox" value="HTML" /> HTML <br />
+          <input type="checkbox" value="CSS" /> CSS <br />
+          <input type="checkbox" value="JavaScript" /> JavaScript <br />
+        </div>
+
+        <button onclick="analyzeSkills()">Analyze Skills</button>
+
+        <p id="missingSkills"></p>
+      </div>
+
+      <!-- DSA Tracker -->
+
+      <div class="card">
+        <h2>DSA Progress Tracker</h2>
+
+        <label>Easy Solved</label>
+        <input type="number" id="easy" />
+
+        <label>Medium Solved</label>
+        <input type="number" id="medium" />
+
+        <label>Hard Solved</label>
+        <input type="number" id="hard" />
+
+        <button onclick="analyzeDSA()">Analyze DSA</button>
+
+        <p id="dsaResult"></p>
+      </div>
+
+      <!-- Resume Analyzer -->
+
+      <div class="card">
+        <h2>Resume Strength Analyzer</h2>
+
+        <label>Projects</label>
+        <input type="number" id="resumeProjects" />
+
+        <label>Internships</label>
+        <input type="number" id="resumeInternships" />
+
+        <label>Certifications</label>
+        <input type="number" id="resumeCertifications" />
+
+        <button onclick="analyzeResume()">Analyze Resume</button>
+
+        <p id="resumeResult"></p>
+      </div>
+    </div>
+
+    <script src="script.js"></script>
+  </body>
+</html>
