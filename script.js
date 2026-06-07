@@ -1,3 +1,12 @@
+const currentPage = window.location.pathname;
+
+if (
+  currentPage.includes("index.html") &&
+  localStorage.getItem("isLoggedIn") !== "true"
+) {
+  window.location.href = "login.html";
+}
+
 let companiesData = [];
 let rolesData = {};
 
@@ -484,7 +493,28 @@ allInputs.forEach((input) => {
 });
 
 function clearSavedData() {
-  localStorage.clear();
+  const fieldsToClear = [
+    "cgpa",
+    "dsa",
+    "projects",
+    "eligibilityCgpa",
+    "backlogs",
+    "easy",
+    "medium",
+    "hard",
+    "resumeProjects",
+    "resumeInternships",
+    "resumeCertifications",
+    "appliedCompanies",
+    "oaCleared",
+    "interviewsCleared",
+    "offersReceived",
+    "studyHours",
+  ];
+
+  fieldsToClear.forEach((field) => {
+    localStorage.removeItem(field);
+  });
 
   location.reload();
 }

@@ -60,3 +60,32 @@ function loginUser() {
       "Invalid email or password";
   }
 }
+
+function logoutUser() {
+  const fieldsToClear = [
+    "cgpa",
+    "dsa",
+    "projects",
+    "eligibilityCgpa",
+    "backlogs",
+    "easy",
+    "medium",
+    "hard",
+    "resumeProjects",
+    "resumeInternships",
+    "resumeCertifications",
+    "appliedCompanies",
+    "oaCleared",
+    "interviewsCleared",
+    "offersReceived",
+    "studyHours",
+  ];
+
+  fieldsToClear.forEach((field) => {
+    localStorage.removeItem(field);
+  });
+
+  localStorage.removeItem("isLoggedIn");
+
+  window.location.href = "login.html";
+}
