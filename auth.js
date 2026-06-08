@@ -1,3 +1,12 @@
+const currentPage = window.location.pathname;
+
+if (
+  currentPage.includes("login.html") &&
+  localStorage.getItem("isLoggedIn") === "true"
+) {
+  window.location.href = "index.html";
+}
+
 function registerUser() {
   const name = document.getElementById("registerName").value.trim();
   const email = document.getElementById("registerEmail").value.trim();

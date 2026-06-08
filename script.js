@@ -1,11 +1,26 @@
-const currentPage = window.location.pathname;
-
 if (
   currentPage.includes("index.html") &&
   localStorage.getItem("isLoggedIn") !== "true"
 ) {
   window.location.href = "login.html";
 }
+
+window.addEventListener("DOMContentLoaded", () => {
+  console.log("Welcome User Code Running");
+
+  const storedUser = JSON.parse(localStorage.getItem("placementIQUser"));
+
+  console.log("Stored User:", storedUser);
+
+  const element = document.getElementById("welcomeUser");
+
+  console.log("Element:", element);
+
+  if (storedUser && element) {
+    element.innerText = `Welcome, ${storedUser.name}`;
+    console.log("Text Updated Successfully");
+  }
+});
 
 let companiesData = [];
 let rolesData = {};
