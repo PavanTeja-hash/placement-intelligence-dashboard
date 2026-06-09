@@ -1,0 +1,24 @@
+{
+  "name": "placement-intelligence-dashboard",
+  "version": "1.0.0",
+  "description": "Placement Intelligence Dashboard is a student-focused web application designed to help engineering students evaluate their placement readiness and identify areas for improvement.",
+  "main": "auth.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/PavanTeja-hash/placement-intelligence-dashboard.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/PavanTeja-hash/placement-intelligence-dashboard/issues"
+  },
+  "homepage": "https://github.com/PavanTeja-hash/placement-intelligence-dashboard#readme",
+  "dependencies": {
+    "express": "^5.2.1"
+  }
+}
