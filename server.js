@@ -39,6 +39,18 @@ app.get("/users", (req, res) => {
   res.json(users);
 });
 
+app.get("/users/:id", (req, res) => {
+  const id = Number(req.params.id);
+
+  if (id < 0 || id >= users.length) {
+    return res.status(404).json({
+      message: "User not found",
+    });
+  }
+
+  res.json(users[id]);
+});
+
 app.listen(3000, () => {
   console.log("Server running on port 3000");
 });
