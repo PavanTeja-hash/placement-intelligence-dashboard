@@ -51,6 +51,23 @@ app.get("/users/:id", (req, res) => {
   res.json(users[id]);
 });
 
+app.delete("/users/:id", (req, res) => {
+  const id = Number(req.params.id);
+
+  if (id < 0 || id >= users.length) {
+    return res.status(404).json({
+      message: "User not found",
+    });
+  }
+
+  const deletedUser = users.splice(id, 1);
+
+  res.json({
+    message: "User deleted successfully",
+    user: deletedUser[0],
+  });
+});
+
 app.listen(3000, () => {
   console.log("Server running on port 3000");
 });
