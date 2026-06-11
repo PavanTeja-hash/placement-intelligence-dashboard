@@ -68,6 +68,59 @@ app.delete("/users/:id", (req, res) => {
   });
 });
 
+app.put("/users/:id", (req, res) => {
+  const id = Number(req.params.id);
+
+  if (id < 0 || id >= users.length) {
+    return res.status(404).json({
+      message: "User not found",
+    });
+  }
+
+  const { name, email } = req.body;
+
+  if (!name || !email) {
+    return res.status(400).json({
+      message: "Name and Email are required",
+    });
+  }
+
+  users[id] = {
+    name,
+    email,
+  };
+
+  res.json({
+    message: "User updated successfully",
+    user: users[id],
+  });
+});
+
+app.patch("/users/:id", (req, res) => {
+  const id = Number(req.params.id);
+
+  if (id < 0 || id >= users.length) {
+    return res.status(404).json({
+      message: "User not found",
+    });
+  }
+
+  const { name, email } = req.body;
+
+  if (name !== undefined) {
+    users[id].name = name;
+  }
+
+  if (email !== undefined) {
+    users[id].email = email;
+  }
+
+  res.json({
+    message: "User partially updated",
+    user: users[id],
+  });
+});
+
 app.listen(3000, () => {
   console.log("Server running on port 3000");
 });
