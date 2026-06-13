@@ -7,13 +7,18 @@ if (
   window.location.href = "index.html";
 }
 
-function registerUser() {
+async function registerUser() {
   const name = document.getElementById("registerName").value.trim();
+
   const email = document.getElementById("registerEmail").value.trim();
+
   const password = document.getElementById("registerPassword").value;
+
   const confirmPassword = document.getElementById("confirmPassword").value;
 
   document.getElementById("registerError").innerText = "";
+
+  document.getElementById("registerSuccess").innerText = "";
 
   if (!name || !email || !password || !confirmPassword) {
     document.getElementById("registerError").innerText =
@@ -27,20 +32,27 @@ function registerUser() {
     return;
   }
 
-  const user = {
-    name,
-    email,
-    password,
-  };
+  try {
+    const response = await fetch("http://localhost:3000/register", {
+      method: "POST",
 
-  localStorage.setItem("placementIQUser", JSON.stringify(user));
+      headers: {
+        "Content-Type": "application/json",
+      },
 
-  document.getElementById("registerSuccess").innerText =
-    "Account created successfully";
+      body: JSON.stringify({
+        name,
+        email,
+      }),
+    });
 
-  setTimeout(() => {
-    window.location.href = "login.html";
-  }, 1500);
+    const data = await response.json();
+
+    document.getElementById("registerSuccess").innerText = data.message;
+  } catch (error) {
+    document.getElementById("registerError").innerText =
+      "Unable to connect to server";
+  }
 }
 
 function loginUser() {
