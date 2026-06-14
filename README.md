@@ -85,6 +85,112 @@ Provides resume score and readiness status.
 
 ---
 
-## Project Status
+# PlacementIQ Development Status
 
-Currently under active development.
+## Vision
+
+PlacementIQ is being developed as a flagship full-stack MERN application that demonstrates strong software engineering principles, real-world relevance, and thoughtful architectural decisions.
+
+The objective is to build a production-oriented placement intelligence platform that remains valuable even without advanced analytics or AI features. Future intelligence capabilities will enhance the platform rather than define its purpose.
+
+---
+
+## Current Development Philosophy
+
+The project is being designed with the following priorities:
+
+- Resume impact
+- Technical depth
+- Real-world relevance
+- Quality over quantity
+- Interview discussion value
+- Scalability and maintainability
+
+Instead of building multiple unrelated projects, PlacementIQ is intended to showcase the ability to design, develop, and evolve a comprehensive software system over time.
+
+---
+
+## Current Architecture
+
+```
+Frontend
+    ↓
+JavaScript fetch()
+    ↓
+Express Backend
+    ↓
+In-Memory Storage (Development Phase)
+```
+
+---
+
+## Backend Progress
+
+### Technology Stack
+
+- Node.js
+- Express.js
+- REST APIs
+- JavaScript (ES6+)
+- Git & GitHub
+
+### Implemented Features
+
+#### User Management APIs
+
+| Method | Endpoint     | Purpose                           |
+| ------ | ------------ | --------------------------------- |
+| POST   | `/register`  | Register a new user               |
+| GET    | `/users`     | Retrieve all users                |
+| GET    | `/users/:id` | Retrieve a specific user          |
+| PUT    | `/users/:id` | Replace a user's details          |
+| PATCH  | `/users/:id` | Partially update a user's details |
+| DELETE | `/users/:id` | Delete a user                     |
+
+### Concepts Implemented
+
+- CRUD Operations
+- Route Parameters
+- Request Validation
+- Status Codes
+- Frontend-to-Backend Communication
+- CORS Handling
+- JSON Request and Response Processing
+- RESTful API Design
+
+---
+
+## Development Roadmap
+
+### Phase 1 – Engineering Foundations (In Progress)
+
+- [x] Frontend Prototype
+- [x] Authentication UI
+- [x] Express Server Setup
+- [x] REST API Development
+- [x] CRUD Operations
+- [x] Frontend ↔ Backend Communication
+- [ ] Frontend Integration for Remaining Workflows
+- [ ] Persistent Database Integration (MongoDB)
+
+### Phase 2 – Production Readiness
+
+- [ ] User Authentication & Authorization
+- [ ] JWT-based Session Management
+- [ ] Protected Routes
+- [ ] Input Sanitization and Enhanced Validation
+- [ ] Error Handling Improvements
+- [ ] Deployment Preparation
+
+### Phase 3 – Intelligence Enhancements
+
+- [ ] Placement Readiness Analytics
+- [ ] Personalized Preparation Insights
+- [ ] Skill Gap Identification
+- [ ] Decision-Support Features
+
+---
+
+## Long-Term Goal
+
+To develop PlacementIQ into a scalable placement intelligence platform that helps students assess their preparation, identify improvement areas, and make informed decisions throughout their placement journey while simultaneously demonstrating strong full-stack engineering capabilities.
