@@ -48,6 +48,15 @@ async function registerUser() {
 
     const data = await response.json();
 
+    localStorage.setItem(
+      "placementIQUser",
+      JSON.stringify({
+        name,
+        email,
+        password,
+      }),
+    );
+
     document.getElementById("registerSuccess").innerText = data.message;
   } catch (error) {
     document.getElementById("registerError").innerText =
