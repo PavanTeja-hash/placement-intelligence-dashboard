@@ -191,6 +191,21 @@ In-Memory Storage (Development Phase)
 
 ---
 
+## Immediate Development Priorities
+
+The next phase of PlacementIQ focuses on strengthening the full-stack foundation before introducing advanced capabilities.
+
+### Upcoming Milestones
+
+- [ ] Complete backend-based login flow
+- [ ] Remove authentication dependency on localStorage
+- [ ] Integrate MongoDB for persistent data storage
+- [ ] Refactor frontend to consume backend APIs consistently
+- [ ] Introduce production-ready authentication mechanisms
+- [ ] Improve overall application architecture and maintainability
+
+This roadmap reflects the project's philosophy of prioritizing engineering quality, real-world relevance, and interview discussion value over feature quantity.
+
 ## Long-Term Goal
 
 To develop PlacementIQ into a scalable placement intelligence platform that helps students assess their preparation, identify improvement areas, and make informed decisions throughout their placement journey while simultaneously demonstrating strong full-stack engineering capabilities.
