@@ -43,19 +43,16 @@ async function registerUser() {
       body: JSON.stringify({
         name,
         email,
+        password,
       }),
     });
 
     const data = await response.json();
 
-    localStorage.setItem(
-      "placementIQUser",
-      JSON.stringify({
-        name,
-        email,
-        password,
-      }),
-    );
+    if (!response.ok) {
+      document.getElementById("registerError").innerText = data.message;
+      return;
+    }
 
     document.getElementById("registerSuccess").innerText = data.message;
   } catch (error) {
@@ -64,30 +61,40 @@ async function registerUser() {
   }
 }
 
-function loginUser() {
+async function loginUser() {
   const email = document.getElementById("loginEmail").value.trim();
+
   const password = document.getElementById("loginPassword").value;
 
   document.getElementById("loginError").innerText = "";
 
-  const storedUser = JSON.parse(localStorage.getItem("placementIQUser"));
-  console.log("Entered Email:", email);
-  console.log("Entered Password:", password);
-  console.log("Stored User:", storedUser);
+  try {
+    const response = await fetch("http://localhost:3000/login", {
+      method: "POST",
 
-  if (!storedUser) {
-    document.getElementById("loginError").innerText =
-      "No account found. Please register first.";
-    return;
-  }
+      headers: {
+        "Content-Type": "application/json",
+      },
 
-  if (email === storedUser.email && password === storedUser.password) {
+      body: JSON.stringify({
+        email,
+        password,
+      }),
+    });
+
+    const data = await response.json();
+
+    if (!response.ok) {
+      document.getElementById("loginError").innerText = data.message;
+      return;
+    }
+
     localStorage.setItem("isLoggedIn", "true");
 
     window.location.href = "index.html";
-  } else {
+  } catch (error) {
     document.getElementById("loginError").innerText =
-      "Invalid email or password";
+      "Unable to connect to server";
   }
 }
 

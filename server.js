@@ -21,11 +21,23 @@ app.get("/api/health", (req, res) => {
 });
 
 app.post("/register", (req, res) => {
-  const { name, email } = req.body;
+  const { name, email, password } = req.body;
 
   console.log("Before Push:", users);
 
-  const user = { name, email };
+  const existingUser = users.find((user) => user.email === email);
+
+  if (existingUser) {
+    return res.status(409).json({
+      message: "Email already registered",
+    });
+  }
+
+  const user = {
+    name,
+    email,
+    password,
+  };
 
   users.push(user);
 
@@ -120,6 +132,29 @@ app.patch("/users/:id", (req, res) => {
   res.json({
     message: "User partially updated",
     user: users[id],
+  });
+});
+
+app.post("/login", (req, res) => {
+  const { email, password } = req.body;
+
+  const user = users.find((user) => user.email === email);
+
+  if (!user) {
+    return res.status(404).json({
+      message: "Account not found",
+    });
+  }
+
+  if (user.password !== password) {
+    return res.status(401).json({
+      message: "Invalid password",
+    });
+  }
+
+  res.json({
+    message: "Login successful",
+    user,
   });
 });
 
