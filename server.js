@@ -19,6 +19,9 @@ app.get("/api/health", (req, res) => {
     status: "healthy",
     project: "PlacementIQ",
     backend: "running",
+    version: "2.3.0",
+    database: "MongoDB Connected",
+    uptime: process.uptime(),
   });
 });
 
