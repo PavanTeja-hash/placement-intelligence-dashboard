@@ -22,6 +22,7 @@ app.get("/api/health", (req, res) => {
     version: "2.3.0",
     database: "MongoDB Connected",
     uptime: process.uptime(),
+    timestamp: new Date(),
   });
 });
 
